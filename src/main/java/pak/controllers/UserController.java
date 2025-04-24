@@ -20,13 +20,13 @@ public class UserController {
 
     @GetMapping("/list")
     public String listUsers(Model model) {
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userService.getAllUsers());
         return "users/listUsers";
     }
 
     @GetMapping("/edit/{id}")
     public String getEditView(@PathVariable("id") Long id, Model model) {
-        User user = userService.findOne(id);
+        User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "/users/edit";
     }

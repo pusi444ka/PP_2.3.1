@@ -23,7 +23,6 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 // thymeleaf
 public class SpringConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
-    // с помощью этого класса можем использовать данные из пропертис файла
     private final Environment env;
 
 
@@ -36,17 +35,13 @@ public class SpringConfig implements WebMvcConfigurer {
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-        // используем context чтобы настроить thymeleaf
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setCharacterEncoding("UTF-8");
-        // задается папка где будут лежать представления
         templateResolver.setPrefix("/WEB-INF/views/");
-        // какие будут у представлений расширения
         templateResolver.setSuffix(".html");
         return templateResolver;
     }
 
-    // производится настройка представлений
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -55,7 +50,6 @@ public class SpringConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
-    // этот метод передает Spring что мы будем использовать шаблонизатор thymeleaf
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();

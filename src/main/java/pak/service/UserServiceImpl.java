@@ -4,8 +4,8 @@ import pak.dao.UserDAO;
 import pak.entity.User;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -16,18 +16,20 @@ public class UserServiceImpl implements UserService{
         this.userDao = userDao;
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public List<User> findAll() {
-        return userDao.findAll();
+    public List<User> getAllUsers() {
+        return userDao.getAllUsers();
     }
     @Transactional
     @Override
     public void save(User user) {
         userDao.save(user);
     }
+    @Transactional(readOnly = true)
     @Override
-    public User findOne(Long id) {
-        return userDao.findOne(id);
+    public User getUserById(Long id) {
+        return userDao.getUserById(id);
     }
     @Transactional
     @Override
