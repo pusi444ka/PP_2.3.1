@@ -15,12 +15,8 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 
 @Configuration
-// в какой папке будет идти поиск bean
 @ComponentScan("pak")
-// аналог <mvc:annotation-driven/>
 @EnableWebMvc
-// WebMvcConfigurer реализует configureViewResolvers(использует когда вместо стандартного шаблонизатора используется
-// thymeleaf
 public class SpringConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
     private final Environment env;

@@ -18,7 +18,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void save(User user) {
+    public void saveUser(User user) {
         entityManager.persist(user);
     }
 
@@ -28,12 +28,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void update(User user) {
+    public void updateUser(User user) {
         entityManager.merge(user);
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteUser(Long id) {
         entityManager.remove(getUserById(id));
     }
 }
