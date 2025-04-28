@@ -33,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void deleteUser(Long id) {
+    public void deleteUserById(Long id) {
         entityManager.remove(getUserById(id));
     }
 }
