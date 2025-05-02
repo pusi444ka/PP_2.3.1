@@ -13,17 +13,17 @@ public class UserDAOImpl implements UserDAO {
     private EntityManager entityManager;
 
     @Override
-    public List<User> getAllUsers() {
+    public List<User> findAllUsers() {
         return entityManager.createQuery("select n from User n", User.class).getResultList();
     }
 
     @Override
-    public void saveUser(User user) {
+    public void createUser(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    public User getUserById(Long id) {
+    public User findUserById(Long id) {
         return entityManager.find(User.class, id);
     }
 
@@ -33,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void deleteUserById(Long id) {
-        entityManager.remove(getUserById(id));
+    public void removeUserById(Long id) {
+        entityManager.remove(findUserById(id));
     }
 }

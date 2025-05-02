@@ -5,13 +5,13 @@ import pak.entity.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> getAllUsers();
+    List<User> findAllUsers();
 
-    void saveUser(User user);
+    void createUser(User user);
 
-    User getUserById(Long id);
+    User findUserById(Long id);
 
     void updateUser(User user);
 
-    void deleteUserById(Long id);
+    void removeUserById(Long id);
 }
