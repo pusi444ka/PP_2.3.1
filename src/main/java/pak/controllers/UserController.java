@@ -44,11 +44,12 @@ public class UserController {
     }
 
     @PostMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {
-        return "/users/new";    }
+    public String showCreateUserForm(@ModelAttribute("user") User user) {
+        return "/users/new";
+    }
 
     @PostMapping
-    public String newUserPost(@ModelAttribute("user") User user) {
+    public String createUser(@ModelAttribute("user") User user) {
         userService.createUser(user);
         return "redirect:/users/list";
     }
